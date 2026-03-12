@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asep Store - TikTok Downloader</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f0f0f; color: white; }
+        .asep-red { color: #ff0000; }
+        .bg-asep { background-color: #ff0000; }
+        .card { background-color: #1a1a1a; border: 1px solid #333; }
+    </style>
+</head>
+<body class="font-sans">
+
+    <nav class="p-6 text-center border-b border-zinc-800">
+        <h1 class="text-3xl font-black italic italic tracking-tighter">ASEP <span class="asep-red">STORE</span></h1>
+        <p class="text-xs text-zinc-500">Fast Download • No Watermark • High Quality</p>
+    </nav>
+
+    <div class="max-w-xl mx-auto mt-10 p-4">
+        <div class="card p-8 rounded-2xl shadow-2xl">
+            <h2 class="text-xl font-bold mb-4 text-center">TikTok Video Downloader 🚀</h2>
+            
+            <div class="space-y-4">
+                <input type="text" id="url" placeholder="Paste link video TikTok di sini, bngsat..." 
+                class="w-full p-4 rounded-lg bg-zinc-900 border border-zinc-700 focus:outline-none focus:border-red-600 transition">
+                
+                <button onclick="downloadVid()" class="w-full bg-asep hover:bg-red-700 text-white font-bold py-4 rounded-lg shadow-lg transition transform hover:scale-105">
+                    GENERATE LINK DOWNLOAD
+                </button>
+            </div>
+
+            <div id="result" class="mt-8 hidden space-y-3">
+                <p class="text-center font-semibold mb-2">Pilih Format, Asep Ganteng: 🗿</p>
+                <button class="w-full bg-zinc-800 py-3 rounded-md hover:bg-zinc-700">🎬 MP4 No Watermark (HD)</button>
+                <button class="w-full bg-zinc-800 py-3 rounded-md hover:bg-zinc-700">🎬 MP4 Normal</button>
+                <button class="w-full bg-zinc-800 py-3 rounded-md hover:bg-zinc-700">🎵 MP3 Audio Only</button>
+            </div>
+        </div>
+
+        <div class="mt-6 card p-4 rounded-xl border-dashed border-red-900">
+            <p class="text-xs text-center text-zinc-400">🔥 Mau HP Licin & Panel Murah? Cek WA: <span class="text-white">081930772079</span></p>
+        </div>
+    </div>async function downloadVid() {
+    const urlInput = document.getElementById('url').value;
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key':curl --request POST \
+	--url https://tiktok-video-no-watermark2.p.rapidapi.com/ \
+	--header 'Content-Type: application/x-www-form-urlencoded' \
+	--header 'x-rapidapi-host: tiktok-video-no-watermark2.p.rapidapi.com' \
+	--header 'x-rapidapi-key: c7e5f560a5msh62a2bb1562c9041p1f283ejsn82cde0a16f90' , // Ambil dari screenshot lu tadi
+            'X-RapidAPI-Host': 'tiktok-all-in-one-downloader.p.rapidapi.com'
+        }
+    };
+
+    try {
+        const response = await fetch(`https://tiktok-all-in-one-downloader.p.rapidapi.com/dl?url=${urlInput}`, options);
+        const result = await response.json();
+        
+        // Munculin tombol download sultan
+        document.getElementById('result').innerHTML = `
+            <div class="p-4 bg-zinc-900 rounded-lg">
+                <p class="text-green-500 font-bold mb-3">VIDEO READY, BOSS ASEP! 🗿</p>
+                <a href="${result.video_hd}" target="_blank" class="block w-full bg-asep py-3 rounded mb-2 text-center font-bold">DOWNLOAD HD (NO WM)</a>
+                <a href="${result.music}" target="_blank" class="block w-full bg-zinc-700 py-3 rounded text-center">DOWNLOAD MP3</a>
+            </div>
+        `;
+        document.getElementById('result').classList.remove('hidden');
+    } catch (error) {
+        console.error(error);
+        alert('Gagal, bngsat! Cek Key lu atau limit API-nya, anjing!');
+    }
+}
+
+
+    <script>
+        function downloadVid() {
+            const url = document.getElementById('url').value;
+            if(!url) return alert('Masukin linknya dulu, kampret!');
+            
+            // Animasi Loading Dikit
+            document.querySelector('button').innerText = 'PROSESING, BNGSAT...';
+            
+            setTimeout(() => {
+                document.getElementById('result').classList.remove('hidden');
+                document.querySelector('button').innerText = 'GENERATE LINK DOWNLOAD';
+                alert('Berhasil dapet linknya! (Simulasi API)');
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
